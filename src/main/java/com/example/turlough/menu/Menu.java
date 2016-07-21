@@ -20,7 +20,7 @@ public class Menu {
 
     }
 
-    void show(){
+    void show() {
 
         int choice = 0;
 
@@ -50,12 +50,13 @@ public class Menu {
         System.out.println("Exiting");
     }
 
-    void add( String description, Runnable runnable){
+    void add(String description, Runnable runnable) {
         Command command = new Command(description, runnable);
         commands.put(++count, command);
     }
 
-    class Command{
+    //<editor-fold desc = "Command: Inner class">
+    private class Command {
         String description;
         Runnable runnable;
 
@@ -68,16 +69,11 @@ public class Menu {
             return description;
         }
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
 
         public Runnable getRunnable() {
             return runnable;
         }
 
-        public void setRunnable(Runnable runnable) {
-            this.runnable = runnable;
-        }
     }
+    //</editor-fold>
 }
