@@ -29,6 +29,7 @@ public class MenuRunner {
     }
 
     static void factorial(int value){
+
         long total = 1;
         for (int i = 1; i < value + 1 ; i++) {
 
@@ -40,19 +41,20 @@ public class MenuRunner {
 
     static void sendSocketMessage() {
 
-        int port = 6672;
+        int port = 6674;
         try {
 
-            ServerSocket server = new ServerSocket(port);
+            ServerSocket server = new ServerSocket();
             ClientSocket client = new ClientSocket();
-            server.start();
+            server.open(port);
             client.open("localhost", port);
+            server.start();
 
             String response = client.enterMessage();
             System.out.println(response);
 
-            client.close();
-            server.close();
+            //client.close();
+            //server.close();
 
 
         } catch (IOException e) {

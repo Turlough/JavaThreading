@@ -1,4 +1,4 @@
-package com.example.turlough.thread;
+package com.example.turlough.misc;
 
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;

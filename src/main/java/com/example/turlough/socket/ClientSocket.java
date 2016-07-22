@@ -26,10 +26,13 @@ public class ClientSocket {
             DataOutputStream out = new DataOutputStream(outToServer);
             System.out.printf("\nClient: sending message '%s'\n", msg);
             out.writeUTF(msg);
+            out.close();
 
             InputStream inFromServer = client.getInputStream();
             DataInputStream in = new DataInputStream(inFromServer);
-            return ("Client: Server says '" + in.readUTF() + "'");
+            String response = ("Client: Server says '" + in.readUTF() + "'");
+            in.close();
+            return response;
 
         } catch (IOException e) {
             return e.getMessage();
