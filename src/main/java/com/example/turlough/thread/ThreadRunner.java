@@ -8,8 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by turlough on 11/07/16.
  */
-public class Main {
-
+public class ThreadRunner {
 
 
     public static void main(String [] args){
@@ -17,7 +16,7 @@ public class Main {
         SupplierFactory factory = new SupplierFactory(1000);
         factory.setLogging(false);
 
-        new Main().start(factory);
+        new ThreadRunner().start(factory);
     }
 
     void start(SupplierFactory factory){
@@ -40,11 +39,11 @@ public class Main {
             t2.start();
             t3.start();
 
-            //sleepWithTimerThread(10000);
-            sleepWithLatch( () -> {
-                System.out.println("Callback called");
-                factory.setRunning(false);
-            }, 30000);
+            sleepWithTimerThread(10000);
+//            sleepWithLatch( () -> {
+//                System.out.println("Callback called");
+//                factory.setRunning(false);
+//            }, 30000);
 
             System.out.println("Done");
 
