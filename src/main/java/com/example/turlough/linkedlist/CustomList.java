@@ -14,8 +14,12 @@ public class CustomList <T> implements Iterable<ListItem<T>> {
     private ListItem<T> current = root;
     private Iterator<ListItem<T>> iterator = new ListIterator<>();
 
+    public synchronized CustomList <T> begin(){
+        current = root;
+        return this;
+    }
 
-    public CustomList<T> add(T item){
+    public synchronized CustomList<T> add(T item){
 
         current = new ListItem(item);
 
@@ -26,12 +30,7 @@ public class CustomList <T> implements Iterable<ListItem<T>> {
         return this;
     }
 
-    public CustomList <T> begin(){
-        current = root;
-        return this;
-    }
-
-    public T get(int position) {
+    public synchronized T get(int position) {
 
         current = root;
         for (int i = 0; i <= position; i++) {
@@ -44,7 +43,7 @@ public class CustomList <T> implements Iterable<ListItem<T>> {
         return current.getItem();
     }
 
-    public T remove (int position) {
+    public synchronized T remove (int position) {
 
         current = root;
         for (int i = 0; i <= position; i++) {
@@ -58,7 +57,7 @@ public class CustomList <T> implements Iterable<ListItem<T>> {
         return current.getItem();
     }
 
-//<editor-fold desc = Iterator>
+//<editor-fold desc="Iterator methods">
     @Override
     public Iterator<ListItem<T>> iterator() {
         return iterator;
