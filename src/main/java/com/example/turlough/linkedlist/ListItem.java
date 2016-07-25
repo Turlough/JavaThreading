@@ -7,6 +7,7 @@ public class ListItem <T> {
 
     private T item = null;
     private ListItem<T> next = null;
+    private ListItem<T> previous = null;
 
     public ListItem(T item) {
         this.item = item;
@@ -22,5 +23,13 @@ public class ListItem <T> {
 
     public void setNext(ListItem<T> next) {
         this.next = next;
+    }
+
+    public ListItem<T> getPrevious() {
+        return previous;
+    }
+
+    public void setPrevious(ListItem<T> previous) {
+        this.previous = previous;
     }
 }

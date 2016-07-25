@@ -9,10 +9,12 @@ import static org.junit.Assert.assertEquals;
  * Created by turlough on 25/07/16.
  */
 public class CustomListTest {
+
     CustomList<Item> list;
 
     @Before
     public void setUp() throws Exception {
+
         list = new CustomList<>();
 
         Item item1 = new Item(1,"test  1");

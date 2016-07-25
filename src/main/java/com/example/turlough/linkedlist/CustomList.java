@@ -16,10 +16,13 @@ public class CustomList <T> implements Iterable<ListItem<T>> {
 
 
     public CustomList<T> add(T item){
-        ListItem listItem = new ListItem(item);
-        last.setNext(listItem);
-        last = listItem;
-        current = root.getNext();
+
+        current = new ListItem(item);
+
+        current.setPrevious(last);
+        last.setNext(current);
+        last = current;
+
         return this;
     }
 
@@ -43,17 +46,15 @@ public class CustomList <T> implements Iterable<ListItem<T>> {
 
     public T remove (int position) {
 
-        ListItem<T> previous = root;
-        current = previous;
-
+        current = root;
         for (int i = 0; i <= position; i++) {
-            previous = current;
-            current = previous.getNext();
+
+            current = current.getNext();
             if(current == null)
                 throw new ArrayIndexOutOfBoundsException("No item found at this position");
 
         }
-        previous.setNext(current.getNext());
+        current.getPrevious().setNext(current.getNext());
         return current.getItem();
     }
 
