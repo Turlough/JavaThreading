@@ -25,8 +25,8 @@ public class ExecutorExample {
     LinkedBlockingQueue<Runnable> queue;
     ExecutorService executor;
 
-    static int corePoolSize = 3;
-    static int maxPoolSize = 6;
+    static int corePoolSize = 1;
+    static int maxPoolSize = 1;
     long keepAliveTime = 10;
 
 
@@ -46,8 +46,9 @@ public class ExecutorExample {
 
     private void execute(Runnable[] runnables) {
 
-        Arrays.asList(runnables).stream()
-                .forEach((r) -> {executor.execute(r);});
+        Arrays.asList(runnables)
+                .forEach( runnable -> executor.execute(runnable) );
+
 
         System.out.println("All jobs are queued for execution...");
     }
